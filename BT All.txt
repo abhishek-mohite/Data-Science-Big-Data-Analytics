@@ -1,0 +1,217 @@
+3)	Write a smart contract on a test network for Bank account of a customer for following operations: 
+a.	Deposit Money 
+b.	Show Balance
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract BankAccount {
+    address public owner;  // The owner of the bank account
+    uint256 public balance;  // The balance in the account
+    
+    constructor() {
+        owner = msg.sender;  // The creator of the contract is the owner
+        balance = 0;  // Initialize the balance to zero
+    }
+    
+    // Function to deposit money into the account
+    function deposit(uint256 amount) public payable {
+        require(msg.value == amount, "Please send the correct amount with the transaction.");
+        require(amount > 0, "Amount to deposit must be greater than zero.");
+        
+        balance += amount;
+    }
+    
+    // Function to check the balance
+    function getBalance() public view returns (uint256) {
+        return balance;
+    }
+}
+
+
+
+4)	Write a  program in solidity to create Student data. Use the following constructs: 
+a.	Structures 
+b.	 Arrays 
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract StudentData {
+    // Define a structure to represent student information
+    struct Student {
+        uint256 studentId;
+        string name;
+        uint256 age;
+    }
+
+    // Declare an array to store student records
+    Student[] public students;
+
+    // Function to add a new student record
+    function addStudent(uint256 _studentId, string memory _name, uint256 _age) public {
+        Student memory newStudent = Student(_studentId, _name, _age);
+        students.push(newStudent);
+    }
+
+    // Function to get the total number of student records
+    function getStudentCount() public view returns (uint256) {
+        return students.length;
+    }
+
+    // Function to get student information by index
+    function getStudent(uint256 index) public view returns (uint256, string memory, uint256) {
+        require(index < students.length, "Student index out of range");
+        Student storage student = students[index];
+        return (student.studentId, student.name, student.age);
+    }
+}
+
+
+5)	Write a survey report on types of Blockchains.
+
+# Survey Report on Types of Blockchains
+
+**Introduction:**
+Blockchains are a revolutionary technology that has gained widespread attention and adoption in various industries, 
+providing secure and transparent methods of storing and sharing data. Blockchains come in various types, each with 
+unique characteristics and use cases. In this survey report, we explore the three main types of blockchains: Public, 
+Private, and Consortium, discussing their features, advantages, and applications.
+
+## 1. Public Blockchains
+
+**Features:**
+- **Decentralization:** Public blockchains are open to anyone, allowing for a decentralized network where anyone 
+can participate.
+- **Permissionless:** No permission is required to join the network or access its data.
+- **Security:** Public blockchains rely on cryptographic algorithms to secure data and transactions.
+- **Transparency:** All transactions are visible to all participants, enhancing transparency and trust.
+
+**Advantages:**
+- **Global Participation:** Public blockchains are accessible worldwide, allowing for global participation.
+- **Censorship Resistance:** These blockchains are resistant to censorship, as no central authority can control them.
+- **Immutability:** Data recorded on public blockchains is difficult to alter, ensuring trust in the system.
+
+**Applications:**
+- Cryptocurrencies (e.g., Bitcoin, Ethereum)
+- Decentralized applications (DApps)
+- Smart contracts
+
+## 2. Private Blockchains
+
+**Features:**
+- **Centralized Control:** Private blockchains are operated and controlled by a single entity or a consortium 
+of trusted parties.
+- **Permissioned:** Access to the network is restricted and controlled by the entity or consortium.
+- **Privacy:** Data on private blockchains is not visible to the public.
+
+**Advantages:**
+- **Efficiency:** Private blockchains are more efficient than public ones, as they have fewer participants and 
+higher transaction speeds.
+- **Data Privacy:** These blockchains are suitable for businesses that require data privacy and confidentiality.
+- **Customization:** The entity or consortium can customize the blockchain to suit their specific needs.
+
+**Applications:**
+- Supply chain management
+- Financial institutions
+- Healthcare data management
+
+## 3. Consortium Blockchains
+
+**Features:**
+- **Semi-Decentralization:** Consortium blockchains are controlled by a group of organizations, striking a balance 
+between public and private blockchains.
+- **Permissioned:** Access is limited to the consortium members.
+- **Security:** They maintain a higher level of security compared to public blockchains.
+
+**Advantages:**
+- **Efficiency:** Consortium blockchains are more efficient and faster than public blockchains.
+- **Trust:** Consortium members are typically trusted entities, which enhances trust within the network.
+- **Customization:** Similar to private blockchains, consortium blockchains can be customized to meet specific industry needs.
+
+**Applications:**
+- Cross-industry collaborations
+- Supply chain networks
+- Joint ventures
+
+
+6)	Present a case study on any one Blockchain application.
+
+**Case Study: Blockchain in Supply Chain Management**
+
+*Abstract:*
+
+This case study explores the application of blockchain technology in supply chain management, 
+focusing on a real-world example that demonstrates the benefits of increased transparency, 
+traceability, and efficiency in the supply chain.
+
+**Introduction:**
+
+Supply chain management is a complex process involving multiple stakeholders, from manufacturers 
+to suppliers, distributors, retailers, and consumers. Ensuring the integrity and efficiency of the 
+supply chain is critical for businesses to deliver quality products, manage inventory, and meet customer 
+demands. Blockchain technology has emerged as a powerful tool to address these challenges by providing 
+transparency and traceability throughout the supply chain.
+
+**Case Study: IBM Food Trust**
+
+One prominent example of blockchain technology transforming supply chain management is the IBM Food Trust platform. 
+Launched by IBM in collaboration with major food companies, it aims to enhance the transparency and trustworthiness 
+of the food supply chain.
+
+**Key Objectives:**
+
+- Ensure food safety and traceability.
+- Reduce food waste and fraud.
+- Improve the efficiency of the supply chain.
+
+**Implementation:**
+
+1. **Data Entry and Validation:** Participants in the supply chain, including growers, suppliers, processors, 
+distributors, retailers, and regulators, input data about food products. Each transaction or data entry is 
+recorded as a block on the blockchain.
+
+2. **Consensus Mechanism:** A permissioned blockchain network is used, meaning only authorized participants can 
+validate and add new blocks. This enhances security and data accuracy.
+
+3. **Traceability:** Each product is assigned a unique identifier (e.g., QR code) that consumers and stakeholders 
+can scan to access detailed information about the product's journey, including origin, processing, and distribution.
+
+4. **Data Sharing:** Participants can access the blockchain to verify the authenticity of products and review the 
+history of each item. This real-time transparency helps in identifying issues and responding quickly to food safety 
+incidents.
+
+**Benefits:**
+
+- **Enhanced Traceability:** The blockchain ensures end-to-end visibility, reducing the time and resources required 
+to trace contaminated products and minimizing the impact of foodborne illnesses.
+
+- **Improved Food Safety:** Rapid identification and recall of contaminated or unsafe products help prevent foodborne 
+diseases and protect consumers.
+
+- **Reduction in Food Waste:** Accurate tracking reduces food waste by enabling precise expiration date management, 
+which, in turn, reduces environmental impact.
+
+- **Increased Trust:** The transparent supply chain fosters trust among consumers, as they can access trustworthy 
+information about the products they consume.
+
+- **Operational Efficiency:** Participants benefit from streamlined supply chain operations and reduced manual 
+record-keeping, which improves efficiency and reduces costs.
+
+**Challenges:**
+
+- **Adoption:** Encouraging all participants in the supply chain to adopt the blockchain technology and consistently 
+input data can be a challenge.
+
+- **Integration:** Integrating blockchain with existing systems and technologies may require effort and resources.
+
+- **Regulatory Compliance:** Meeting regulatory requirements and ensuring data privacy can be complex, especially in 
+highly regulated industries.
+
+**Conclusion:**
+
+The IBM Food Trust case study demonstrates how blockchain technology is transforming the food supply chain. By increasing 
+transparency, traceability, and efficiency, blockchain solutions like this one have the potential to improve safety, reduce waste, 
+and build trust among consumers. The success of this application paves the way for the broader adoption of blockchain in supply 
+chain management across various industries.
+
