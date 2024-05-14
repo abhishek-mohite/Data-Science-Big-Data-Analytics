@@ -1,2 +1,2 @@
-# PRACTICALS-7-SEM
-PRACTICAL CODES FOR 7 SEM 
+# Data Science & Big Data Analytics
+Data Science & Big Data Analytics
